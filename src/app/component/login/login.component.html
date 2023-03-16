@@ -1,1 +1,16 @@
-<p>login works!</p>
+<p>login works! </p>
+<!-- <div><button type="submit" (click)="usePrefilled()">Use prefilled values</button></div> -->
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+  <label for="first-name">Email: </label>
+  <input type="text" #elEmail formControlName="email" (ngModelChange)="onAnyChange()">
+
+  <label for="last-name">Password: </label>
+  <input type="text" #elPassword formControlName="password" (ngModelChange)="onAnyChange()">
+
+  <button type="submit">Submit</button>
+</form>
+
+<div *ngIf="errorCode === 400">Wrong username or password</div>
+<div *ngIf="!!errorCode && errorCode !== 400">Unexpected error</div>
