@@ -1,23 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
+import { RouterModule } from '@angular/router';
+import { AppStoreModule } from './store/';
+import { AppRoutingModule } from './routing/app-routing.module';
+import { UserService } from './service';
+import { AppComponent, DashboardComponent, LoginComponent } from './component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DashboardComponent,    
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     AppRoutingModule,
-    StoreModule.forRoot(reducers, {
-      metaReducers
-    })
+    AppStoreModule,
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
